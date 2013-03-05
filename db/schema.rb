@@ -11,7 +11,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305193805) do
+ActiveRecord::Schema.define(:version => 20130305225037) do
+
+  create_table "artist_profiles", :force => true do |t|
+    t.text     "vita"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "painting_at_spots", :force => true do |t|
+    t.date     "from_date"
+    t.date     "to_date"
+    t.integer  "spot_id"
+    t.integer  "painting_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "painting_likes", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "painting_id"
+  end
+
+  create_table "paintings", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "artist_profile_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "paintings_tags", :id => false, :force => true do |t|
+    t.integer "painting_id"
+    t.integer "tag_id"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +57,36 @@ ActiveRecord::Schema.define(:version => 20130305193805) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "scans", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "painting_at_spot_id"
+  end
+
+  create_table "spots", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "capacity"
+    t.string   "address"
+    t.integer  "zip"
+    t.string   "city"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tag_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.integer  "tag_category_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

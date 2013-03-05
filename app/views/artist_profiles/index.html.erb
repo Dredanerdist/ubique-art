@@ -1,0 +1,23 @@
+<h1>Listing artist_profiles</h1>
+
+<table>
+  <tr>
+    <th>Vita</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @artist_profiles.each do |artist_profile| %>
+  <tr>
+    <td><%= artist_profile.vita %></td>
+    <td><%= link_to 'Show', artist_profile %></td>
+    <td><%= link_to 'Edit', edit_artist_profile_path(artist_profile) %></td>
+    <td><%= link_to 'Destroy', artist_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Artist profile', new_artist_profile_path %>
