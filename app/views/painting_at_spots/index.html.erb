@@ -1,9 +1,12 @@
-<h1>Listing painting_at_spots</h1>
+<h1>Platzierungen</h1>
 
 <table>
   <tr>
-    <th>From date</th>
-    <th>To date</th>
+    <th>Werk</th>
+    <th>Künstler</th>
+		<th>Spot</th>
+    <th>Ab</th>
+    <th>Bis</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,15 +14,22 @@
 
 <% @painting_at_spots.each do |painting_at_spot| %>
   <tr>
-    <td><%= painting_at_spot.from_date %></td>
-    <td><%= painting_at_spot.to_date %></td>
-    <td><%= link_to 'Show', painting_at_spot %></td>
-    <td><%= link_to 'Edit', edit_painting_at_spot_path(painting_at_spot) %></td>
-    <td><%= link_to 'Destroy', painting_at_spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to painting_at_spot.painting.name, painting_at_spot.painting %></td>
+    <td><%= link_to painting_at_spot.painting.artist_profile.user.name, painting_at_spot.painting.artist_profile %></td>
+		<td><%= link_to painting_at_spot.spot.name, painting_at_spot.spot %></td>
+		<td><%= painting_at_spot.from_date %></td>
+		<td><%= painting_at_spot.to_date %></td>
+			<td><%= link_to 'Anzeigen', painting_at_spot %></td>
+		<% if can? :edit, painting_at_spot then %>
+    	<td><%= link_to 'Bearbeiten', edit_painting_at_spot_path(painting_at_spot) %></td>
+		<% end %>
+		<% if can? :delete, painting_at_spot then %>
+    	<td><%= link_to 'Löschen', painting_at_spot, method: :delete, data: { confirm: 'Sicher?' } %></td>
+		<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Painting at spot', new_painting_at_spot_path %>
+<%= link_to 'Neue Platzierung eintragen', new_painting_at_spot_path %>

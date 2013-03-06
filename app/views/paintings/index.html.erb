@@ -1,25 +1,25 @@
-<h1>Listing paintings</h1>
+<h1>Werke</h1>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Description</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @paintings.each do |painting| %>
   <tr>
-    <td><%= painting.name %></td>
-    <td><%= painting.description %></td>
-    <td><%= link_to 'Show', painting %></td>
-    <td><%= link_to 'Edit', edit_painting_path(painting) %></td>
-    <td><%= link_to 'Destroy', painting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to painting.name, painting %></td>
+		<% if can? :edit, painting then %>
+    	<td><%= link_to 'Bearbeiten', edit_painting_path(painting) %></td>
+		<% end %>
+		<% if can? :delete, painting then %>
+   	 <td><%= link_to 'Löschen', painting, method: :delete, data: { confirm: 'Sicher?' } %></td>
+		<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Painting', new_painting_path %>
+<%= link_to 'Neues Kunstwerk eintragen', new_painting_path %>

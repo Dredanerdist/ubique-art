@@ -1,4 +1,6 @@
-<h3>Home</h3>
+<h3>Willkommen</h3>
+
+<h4> Mitglieder: </h4>
 <% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+  <p><%=link_to user.name, user %></p>
 <% end %>

@@ -1,23 +1,22 @@
-<h1>Listing artist_profiles</h1>
+<h1>Teilnehmende Künstler</h1>
+
+<%= link_to 'Ich bin Künstler!', new_artist_profile_path %>
 
 <table>
   <tr>
-    <th>Vita</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Name</th>
+		<th></th>
   </tr>
 
 <% @artist_profiles.each do |artist_profile| %>
   <tr>
-    <td><%= artist_profile.vita %></td>
-    <td><%= link_to 'Show', artist_profile %></td>
-    <td><%= link_to 'Edit', edit_artist_profile_path(artist_profile) %></td>
-    <td><%= link_to 'Destroy', artist_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to artist_profile.user.name, artist_profile %></td>
   </tr>
+	<% if can? :delete,  artist_profile then %>
+		<td><%= link_to 'Löschen', artist_profile, method: :delete, data: { confirm: 'Sicher?' } %></td>
+	<% end %>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Artist profile', new_artist_profile_path %>

@@ -1,4 +1,4 @@
-<h1>Listing tag_categories</h1>
+<h1>Tag-Kategorien</h1>
 
 <table>
   <tr>
@@ -11,13 +11,17 @@
 <% @tag_categories.each do |tag_category| %>
   <tr>
     <td><%= tag_category.name %></td>
-    <td><%= link_to 'Show', tag_category %></td>
-    <td><%= link_to 'Edit', edit_tag_category_path(tag_category) %></td>
-    <td><%= link_to 'Destroy', tag_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Anzeigen', tag_category %></td>
+		<% if can? :edit, tag_category then %>
+    	<td><%= link_to 'Bearbeiten', edit_tag_category_path(tag_category) %></td>
+		<% end %>
+		<% if can? :delete, tag_category then %>
+    	<td><%= link_to 'Löschen', tag_category, method: :delete, data: { confirm: 'Sicher?' } %></td>
+			<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Tag category', new_tag_category_path %>
+<%= link_to 'Neue Kategorie', new_tag_category_path %>
