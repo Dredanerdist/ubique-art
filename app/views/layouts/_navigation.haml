@@ -4,8 +4,11 @@
       %h1
         = link_to root_path, title: 'ubique art' do
           = image_tag 'logo.png'
+    %li.toggle-topbar.menu-icon
+      = link_to '#' do
+        %span Menu
+      /
   %section.top-bar-section
-
     %ul.left
       %li.divider
       %li
@@ -40,3 +43,4 @@
         - else
           %li
             = link_to 'Registrieren', new_user_registration_path
+

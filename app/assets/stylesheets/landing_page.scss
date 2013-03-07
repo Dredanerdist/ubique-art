@@ -14,14 +14,23 @@
     li {
       background: rgba(255, 255, 255, 0.25);
       color: white;
-      h4 {
+      h4, h5 {
         color: white;
+        display: inline-block;
+      }
+      h5 {
+        padding: 0;
+        margin: 0;
+        padding-top: 8px;
       }
       margin: 5px;
       padding: 5px 20px 5px 20px;
 
       &.btn {
         height: 47px;
+      }
+      &.no-bg {
+        background: none;
       }
     }
   }
@@ -36,7 +45,7 @@
   .team {
     float: left;
     width: 50%;
-    margin-top: -20px;
+    margin-top: -90px;
     border: 10px solid white;
   }
 }
