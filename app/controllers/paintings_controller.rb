@@ -28,7 +28,7 @@ class PaintingsController < ApplicationController
 
 
     if @painting.save
-      redirect_to action: :index, notice: 'Painting was successfully created.'
+      redirect_to paintings_path, notice: 'Painting was successfully created.'
     else
       render action: "new"
     end
@@ -39,10 +39,11 @@ class PaintingsController < ApplicationController
     authorize! :update, painting
 
     respond_to do |format|
-      if @painting.update_attributes(params[:painting])
-        redirect_to @painting, notice: 'Painting was successfully updated.'
+      if painting.update_attributes(params[:painting])
+        redirect_to paintings_path, notice: 'Painting was successfully updated.'
       else
-        render action: "edit"
+        Rails.logger.debug painting.errors.to_yaml
+        render action: :edit
       end
     end
   end
