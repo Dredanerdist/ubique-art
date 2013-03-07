@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @spot.name
+%p
+  %b Beschreibung:
+  = @spot.description
+%p
+  %b Kapazität:
+  = @spot.capacity
+%p
+  %b Adresse:
+  = @spot.address
+%p
+  %b PLZ:
+  = @spot.zip
+%p
+  %b Ort:
+  = @spot.city
+= link_to 'Bearbeiten', edit_spot_path(@spot)
+|
+\#{link_to 'Zurück', spots_path}

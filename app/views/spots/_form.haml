@@ -1,0 +1,11 @@
+= simple_form_for(@spot) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+    = f.input :description
+    = f.input :capacity
+    = f.input :address
+    = f.input :zip
+    = f.input :city
+  .form-actions
+    = f.button :submit

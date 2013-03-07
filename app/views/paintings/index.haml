@@ -1,0 +1,27 @@
+#gallery.row
+  .large-12.columns
+    %ul.large-block-grid-4
+      - paintings.in_groups_of(4).each do |group|
+        - group.each do |painting|
+          %li
+            - if painting.present?
+              = image_tag painting.image.gallery.url
+              .overlay
+                %span
+                  %h3
+                    = painting.name
+                .description
+                  = painting.description
+                .actions
+                  %ul.button-group.radius
+                    - if can?(:edit, painting)
+                      %li
+                        = link_to edit_painting_path(painting), class: 'button small' do
+                          %i.fi-edit
+                    - if can?(:destroy, painting)
+                      %li
+                        = link_to painting_path(painting), method: :delete, class: 'button small', confirm: 'Sind Sie Sicher?' do
+                          %i.fi-trash
+    %br
+    = link_to new_painting_path, class: 'button radius small', title: 'Neues Kunstwerk eintragen' do
+      %i.fi-plus

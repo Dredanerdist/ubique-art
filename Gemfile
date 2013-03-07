@@ -9,8 +9,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'zurb-foundation'
   gem 'compass-rails'
+  gem 'foundicons-rails'
 end
 
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'haml'
 gem 'jquery-rails'
 
@@ -23,7 +26,6 @@ gem "simple_form", ">= 2.0.4"
 
 group :development do
   gem "quiet_assets", ">= 1.0.1"
-  gem "better_errors", ">= 0.6.0"
   gem "hub", ">= 1.10.2", :require => false
   gem "binding_of_caller", ">= 0.7.1", :platforms => [:mri_19, :rbx]
 end

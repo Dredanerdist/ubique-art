@@ -1,83 +1,68 @@
 class PaintingsController < ApplicationController
+  respond_to :html
   # GET /paintings
-  # GET /paintings.json
   def index
-    @paintings = Painting.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @paintings }
-    end
+    @paintings = Painting.scoped
   end
 
   # GET /paintings/1
-  # GET /paintings/1.json
   def show
-    @painting = Painting.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @painting }
-    end
+    authorize! :show, painting
   end
 
   # GET /paintings/new
-  # GET /paintings/new.json
   def new
     @painting = Painting.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @painting }
-    end
+    authorize! :new, painting
   end
 
   # GET /paintings/1/edit
   def edit
-    @painting = Painting.find(params[:id])
+    authorize! :edit, painting
   end
 
   # POST /paintings
-  # POST /paintings.json
   def create
     @painting = Painting.new(params[:painting])
+    authorize! :create, painting
 
-    respond_to do |format|
-      if @painting.save
-        format.html { redirect_to @painting, notice: 'Painting was successfully created.' }
-        format.json { render json: @painting, status: :created, location: @painting }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @painting.errors, status: :unprocessable_entity }
-      end
+
+    if @painting.save
+      redirect_to action: :index, notice: 'Painting was successfully created.'
+    else
+      render action: "new"
     end
   end
 
   # PUT /paintings/1
-  # PUT /paintings/1.json
   def update
-    @painting = Painting.find(params[:id])
+    authorize! :update, painting
 
     respond_to do |format|
       if @painting.update_attributes(params[:painting])
-        format.html { redirect_to @painting, notice: 'Painting was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @painting, notice: 'Painting was successfully updated.'
       else
-        format.html { render action: "edit" }
-        format.json { render json: @painting.errors, status: :unprocessable_entity }
+        render action: "edit"
       end
     end
   end
 
   # DELETE /paintings/1
-  # DELETE /paintings/1.json
   def destroy
-    @painting = Painting.find(params[:id])
+    authorize! :destroy, painting
     @painting.destroy
 
-    respond_to do |format|
-      format.html { redirect_to paintings_url }
-      format.json { head :no_content }
-    end
+    redirect_to paintings_url
   end
+
+  private
+  def painting
+    return @painting ||= Painting.find(params.fetch(:id))
+  end
+  helper_method :painting
+
+  def paintings
+    return @paintings
+  end
+  helper_method :paintings
 end

@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
+  private
+  def current_ability
+    return @ability ||= Ability.new(current_user)
+  end
 end

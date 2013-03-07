@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %b Vita:
+  = @artist_profile.vita
+= link_to 'Bearbeiten', edit_artist_profile_path(@artist_profile)
+|
+\#{link_to 'Zurück', artist_profiles_path}

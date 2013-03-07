@@ -1,0 +1,9 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @painting.name
+%p
+  %b Kurzinfo:
+  = @painting.description
+
+= link_to 'Bearbeiten', edit_painting_path(@painting)

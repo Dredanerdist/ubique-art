@@ -1,0 +1,16 @@
+= form_for(@painting) do |f|
+  .row
+    .large-6.columns
+      = f.label :name
+      = f.text_field :name
+    .large-6.columns
+      = f.label :description
+      = f.text_area :description
+  .row
+    .large-12.columns
+      = f.label :image
+      = f.file_field :image
+  .form-actions
+    = f.submit 'Speichern', class: 'button radius'
+    oder
+    = link_to 'zurück', paintings_path, class: 'radius button small alert'
