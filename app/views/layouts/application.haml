@@ -13,12 +13,8 @@
       .large-12.columns.contain-to-grid.fixed
         = render 'layouts/navigation'
     #main{:role => "main"}
-      .container
-        .content
-          .row
-            .span12
-              = render 'layouts/messages'
-              = yield
+      = yield
+      .row
+        .small-12.large-12.columns
           %footer
-      / ! end of .container
-    / ! end of #main
+            Eine Entwicklung der Prototyping Week der CAU Kiel

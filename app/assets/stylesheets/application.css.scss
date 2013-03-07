@@ -12,6 +12,8 @@
  *= require foundation_and_overrides
  *= require_tree .
 */
+@import "compass/css3/transition";
+@import "compass/css3/filter";
 
 .content {
   background-color: #eee;
@@ -27,4 +29,12 @@
 
 .padtop {
 	padding-top: 20px;
+}
+
+.title-area .name img {
+  width: 100px;
+
+  &:hover {
+    @include filter(brightness(50%));
+  }
 }
