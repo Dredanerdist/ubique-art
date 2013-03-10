@@ -3,12 +3,13 @@
     %h1 Teilnehmende Künstler
     - if can? :create, ArtistProfile
       = link_to 'Ich bin Künstler!', new_artist_profile_path
+      %p
     %table.large-12
       %tr
         %th Name
         %th Aktionen
-      - @artist_profiles.each do |artist_profile|
+      - artist_profiles.each do |artist_profile|
         %tr
           %td= link_to artist_profile.user.name, artist_profile
-        - if can? :delete,  artist_profile then
-          %td= link_to 'Löschen', artist_profile, method: :delete, data: { confirm: 'Sicher?' }
+          - if can? :delete,  artist_profile then
+            %td= link_to 'Löschen', artist_profile, method: :delete, data: { confirm: 'Sicher?' }, class: 'button small'

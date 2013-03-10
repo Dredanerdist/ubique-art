@@ -1,7 +1,10 @@
+
 %p#notice= notice
 %p
+  - if can? :edit, artist_profile
+    = link_to 'Bearbeiten', edit_artist_profile_path, class: 'button small'
+  %p
   %b Vita:
-  = @artist_profile.vita
-= link_to 'Bearbeiten', edit_artist_profile_path(@artist_profile)
-|
-\#{link_to 'Zurück', artist_profiles_path}
+  %p
+    = artist_profile.vita
+= link_to 'Zurück zur Übersicht', artist_profiles_path, class: 'button small'

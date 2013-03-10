@@ -1,7 +1,8 @@
 %p#notice= notice
 %p
-  %b Name:
-  = @painting.name
+  %b 
+    = @painting.name
+  = image_tag painting.image.gallery.url
 %p
   %b Kurzinfo:
   = @painting.description

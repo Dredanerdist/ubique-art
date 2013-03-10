@@ -9,4 +9,6 @@ class Painting < ActiveRecord::Base
     class_name: PaintingAtSpot.name.to_s
 
    mount_uploader :image, PaintingUploader
+   
+   validates :artist_profile_id, presence: true
 end

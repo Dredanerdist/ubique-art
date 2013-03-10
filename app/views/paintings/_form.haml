@@ -1,15 +1,16 @@
 = form_for(@painting) do |f|
   .row
     .large-6.columns
-      = f.label :name
+      = f.label "Name"
       = f.text_field :name
     .large-6.columns
-      = f.label :description
+      = f.label "Beschreibung"
       = f.text_area :description
   .row
     .large-12.columns
-      = f.label :image
+      = f.label "Bilddatei"
       = f.file_field :image
+  %p
   .form-actions
     = f.submit 'Speichern', class: 'button radius'
     oder

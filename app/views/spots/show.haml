@@ -1,22 +1,20 @@
-%p#notice= notice
+%p
 %p
   %b Name:
-  = @spot.name
+  = spot.name
 %p
   %b Beschreibung:
-  = @spot.description
+  = spot.description
+%p
+  = gmaps4rails(@json)
 %p
   %b Kapazität:
-  = @spot.capacity
+  = spot.capacity
 %p
   %b Adresse:
-  = @spot.address
-%p
-  %b PLZ:
-  = @spot.zip
-%p
-  %b Ort:
-  = @spot.city
+  = spot.address
+  = spot.zip
+  = spot.city
 = link_to 'Bearbeiten', edit_spot_path(@spot)
 |
 \#{link_to 'Zurück', spots_path}
