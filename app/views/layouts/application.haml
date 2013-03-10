@@ -13,8 +13,11 @@
     = render 'layouts/navigation'
 
     #main{:role => "main"}
-      = yield
+      .row
+        .large-12
+          = render '/layouts/messages'
+          = yield
       .row
         .small-12.large-12.columns
           %footer
-            Eine Entwicklung der Prototyping Week der CAU Kiel
+            Entwickelt mit Unterstützung von starterkitchen.de

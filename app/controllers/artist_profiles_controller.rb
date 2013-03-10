@@ -1,12 +1,11 @@
 #encoding: utf-8
 class ArtistProfilesController < ApplicationController
   def index
-    @artist_profiles = ArtistProfile.all
+    
   end
 
   def show
     authorize! :show, artist_profile
-    @artist_profile = ArtistProfile.find(params[:id])
   end
 
   def new
@@ -22,7 +21,7 @@ class ArtistProfilesController < ApplicationController
     @artist_profile = ArtistProfile.new(params[:artist_profile])
     authorize! :create, artist_profile
     
-    if @artist_profile.save
+    if artist_profile.save
       redirect_to action: :index, notice: 'Künstlerprofil angelegt.'
     else
       render action: "new"
@@ -32,8 +31,8 @@ class ArtistProfilesController < ApplicationController
   def update
     authorize! :update, artist_profile
 
-    if @artist_profile.update_attributes(params[:artist_profile])
-      redirect_to @artist_profile, notice: 'Künstlerprofil aktualisiert.'
+    if artist_profile.update_attributes(params[:artist_profile])
+      redirect_to artist_profile, notice: 'Künstlerprofil aktualisiert.'
     else
       render action: "edit"
     end
@@ -42,7 +41,7 @@ class ArtistProfilesController < ApplicationController
   def destroy
     authorize! :destroy, artist_profile
     
-    @artist_profile.destroy
+    artist_profile.destroy
 
     redirect_to artist_profiles_url
   end
@@ -53,8 +52,8 @@ class ArtistProfilesController < ApplicationController
   end
   helper_method :artist_profile
 
-  def paintings
-    return @artist_profiles
+  def artist_profiles
+    return @artist_profiles ||= ArtistProfile.all
   end
   helper_method :artist_profiles
 end

@@ -9,7 +9,10 @@
               .overlay
                 %span
                   %h3
-                    = painting.name
+                    = link_to painting.name, painting
+                .artist
+                  von
+                  = link_to painting.artist_profile.user.name, painting.artist_profile
                 .description
                   = painting.description
                 .actions

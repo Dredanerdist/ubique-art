@@ -9,7 +9,7 @@
           %th Ort
           %th Aktionen
       %tbody
-        - @spots.each do |spot|
+        - spots.each do |spot|
           %tr
             %td= link_to spot.name, spot
             %td= spot.capacity
@@ -23,4 +23,5 @@
                   %li
                     = link_to 'Löschen', spot, method: :delete, data: { confirm: 'Sicher?' }, class: 'button small alert'
     %br/
-    = link_to 'Neuen Spot eintragen', new_spot_path
+    - if can? :create, Spot
+      = link_to 'Neuen Spot eintragen', new_spot_path

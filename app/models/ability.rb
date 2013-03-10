@@ -2,24 +2,27 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    can :view, User
+    can :read, [Spot, ArtistProfile, Painting]
     if not user.nil?
-      user = User.new
+      #user = User.new
+      can :read, User
       if user.has_role? :admin
         can :manage, :all
       end
     
-      if not user.artist_profile.nil?
-        can :create, Painting
-        can :new, Painting
-        can :manage, ArtistProfile do |ap|
-          ap.try(:user) == user
-        end
-      else
+      if user.artist_profile.nil?
         can :create, ArtistProfile
         can :new, ArtistProfile
+      else
+        can :create, Painting
+        can :new, Painting
+        can :edit, ArtistProfile do |ap|
+          ap.try(:user) == user
+        end
         can :manage, Painting do |p|
           p.try(:artist_profile) == user.try(:artist_profile)
-        end
+        end   
       end
     end
     

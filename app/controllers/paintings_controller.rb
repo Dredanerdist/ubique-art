@@ -25,7 +25,8 @@ class PaintingsController < ApplicationController
   def create
     @painting = Painting.new(params[:painting])
     authorize! :create, painting
-
+    
+    painting.artist_profile = current_user.artist_profile
 
     if @painting.save
       redirect_to action: :index, notice: 'Bild angelegt.'
@@ -38,13 +39,11 @@ class PaintingsController < ApplicationController
   def update
     authorize! :update, painting
 
-    respond_to do |format|
-      if painting.update_attributes(params[:painting])
-        redirect_to paintings_path, notice: 'Bilddaten aktualisiert.'
-      else
-        Rails.logger.debug painting.errors.to_yaml
-        render action: :edit
-      end
+    if painting.update_attributes(params[:painting])
+      redirect_to paintings_path, notice: 'Bilddaten aktualisiert.'
+    else
+      Rails.logger.debug painting.errors.to_yaml
+      render action: :edit
     end
   end
 
@@ -57,6 +56,7 @@ class PaintingsController < ApplicationController
   end
 
   private
+  
   def painting
     return @painting ||= Painting.find(params.fetch(:id))
   end
