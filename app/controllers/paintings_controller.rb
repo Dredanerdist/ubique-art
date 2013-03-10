@@ -39,10 +39,11 @@ class PaintingsController < ApplicationController
     authorize! :update, painting
 
     respond_to do |format|
-      if @painting.update_attributes(params[:painting])
-        redirect_to @painting, notice: 'Bilddaten aktualisiert.'
+      if painting.update_attributes(params[:painting])
+        redirect_to paintings_path, notice: 'Bilddaten aktualisiert.'
       else
-        render action: "edit"
+        Rails.logger.debug painting.errors.to_yaml
+        render action: :edit
       end
     end
   end
