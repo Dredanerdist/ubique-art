@@ -1,9 +1,11 @@
 class SpotsController < ApplicationController
   def index
+    @json = spots.to_gmaps4rails
   end
 
   def show
     authorize! :show, spot
+    @json = spot.to_gmaps4rails
   end
 
   def new
@@ -18,7 +20,7 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(params[:spot])
     authorize! :create, spot
-  
+    spot.user = current_user
     if spot.save
       redirect_to action: :index, notice: 'Spot erstellt.'
     else

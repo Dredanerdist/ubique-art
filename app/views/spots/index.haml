@@ -25,3 +25,5 @@
     %br/
     - if can? :create, Spot
       = link_to 'Neuen Spot eintragen', new_spot_path
+    %p
+    = gmaps4rails(@json)

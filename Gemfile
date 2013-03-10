@@ -21,6 +21,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'haml'
 gem 'jquery-rails'
+gem 'gmaps4rails'
 
 gem "thin", ">= 1.5.0"
 gem "hominid", ">= 3.0.5"

@@ -20,6 +20,7 @@ class ArtistProfilesController < ApplicationController
   def create
     @artist_profile = ArtistProfile.new(params[:artist_profile])
     authorize! :create, artist_profile
+    artist_profile.user = current_user
     
     if artist_profile.save
       redirect_to action: :index, notice: 'Künstlerprofil angelegt.'

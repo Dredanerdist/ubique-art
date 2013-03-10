@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307144540) do
+ActiveRecord::Schema.define(:version => 20130310150332) do
 
   create_table "artist_profiles", :force => true do |t|
     t.text     "vita"
@@ -74,6 +74,9 @@ ActiveRecord::Schema.define(:version => 20130307144540) do
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.float    "longitude"
+    t.float    "latitude"
+    t.boolean  "gmaps"
   end
 
   create_table "tag_categories", :force => true do |t|
