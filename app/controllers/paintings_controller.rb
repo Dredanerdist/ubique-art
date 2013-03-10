@@ -28,7 +28,7 @@ class PaintingsController < ApplicationController
 
 
     if @painting.save
-      redirect_to action: :index, notice: 'Painting was successfully created.'
+      redirect_to action: :index, notice: 'Bild angelegt.'
     else
       render action: "new"
     end
@@ -40,7 +40,7 @@ class PaintingsController < ApplicationController
 
     respond_to do |format|
       if @painting.update_attributes(params[:painting])
-        redirect_to @painting, notice: 'Painting was successfully updated.'
+        redirect_to @painting, notice: 'Bilddaten aktualisiert.'
       else
         render action: "edit"
       end

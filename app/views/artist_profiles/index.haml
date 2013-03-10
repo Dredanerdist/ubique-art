@@ -1,11 +1,12 @@
 .row
   .large-12.columns
     %h1 Teilnehmende Künstler
-    = link_to 'Ich bin Künstler!', new_artist_profile_path
+    - if can? :create, ArtistProfile
+      = link_to 'Ich bin Künstler!', new_artist_profile_path
     %table.large-12
       %tr
         %th Name
-        %th
+        %th Aktionen
       - @artist_profiles.each do |artist_profile|
         %tr
           %td= link_to artist_profile.user.name, artist_profile
