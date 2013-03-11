@@ -1,4 +1,6 @@
 #landing-page {
+  background: #111;
+  color: #777;
   .landinpage {
     background-size: cover;
   }
@@ -42,10 +44,21 @@
     margin-top: -2px;
   }
 
-  .team {
+  .imgleft {
     float: left;
     width: 50%;
     margin-top: -90px;
     border: 10px solid white;
   }
+  .imgright {
+    float: right;
+    width: 50%;
+    margin-top: -90px;
+    border: 10px solid white;
+  }
+  .half {
+    float: top;
+    width: 50%;
+  }
+  
 }

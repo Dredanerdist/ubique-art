@@ -4,17 +4,19 @@ class Ability
   def initialize(user)
     can :view, User
     can :read, [Spot, ArtistProfile, Painting]
-    can :like, Painting do |p|
-      not user.liked_paintings.include?(p)
-    end
-    can :unlike, Painting do |p|
-      user.liked_paintings.include?(p)
-    end
+  
     if not user.nil?
       #user = User.new
       can :read, User
       if user.has_role? :admin
         can :manage, :all
+      end
+      
+      can :like, Painting do |p|
+        not user.liked_paintings.include?(p)
+      end
+      can :unlike, Painting do |p|
+        user.liked_paintings.include?(p)
       end
     
       if user.artist_profile.nil?

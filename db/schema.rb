@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310150332) do
+ActiveRecord::Schema.define(:version => 20130311185734) do
 
   create_table "artist_profiles", :force => true do |t|
     t.text     "vita"
@@ -38,8 +38,12 @@ ActiveRecord::Schema.define(:version => 20130310150332) do
     t.string   "name"
     t.text     "description"
     t.integer  "artist_profile_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.string   "image"
   end
 
@@ -74,8 +78,8 @@ ActiveRecord::Schema.define(:version => 20130310150332) do
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.float    "longitude"
     t.float    "latitude"
+    t.float    "longitude"
     t.boolean  "gmaps"
   end
 
@@ -110,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20130310150332) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "image"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

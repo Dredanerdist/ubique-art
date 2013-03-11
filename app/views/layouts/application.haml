@@ -10,15 +10,18 @@
     = csrf_meta_tags
     = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
-    = render 'layouts/navigation'
+    #wrap
+      = render 'layouts/navigation'
 
-    #main{:role => "main"}
-      .row
-        .large-12
+      #main{:role => "main"}
+        -if current_page?(root_path)
           = render '/layouts/messages'
           = yield
-      .row
-        .small-12.large-12.columns
-          %footer
-            Entwickelt mit Unterstützung von starterkitchen.de
-            = yield :scripts
+        -else
+          .row
+            .small-12.large-12.columns
+              = render '/layouts/messages'
+              = yield
+    %footer
+      Entwickelt mit Unterstützung von starterkitchen.de
+      = yield :scripts

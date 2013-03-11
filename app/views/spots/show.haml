@@ -1,4 +1,6 @@
 %p
+  - if can? :edit, spot
+    = link_to 'Bearbeiten', edit_spot_path(spot), class: 'button small'
 %p
   %b Name:
   = spot.name
@@ -15,6 +17,4 @@
   = spot.address
   = spot.zip
   = spot.city
-= link_to 'Bearbeiten', edit_spot_path(@spot)
-|
-\#{link_to 'Zurück', spots_path}
+= link_to 'Zurück zur Übersicht', spots_path, class: 'button small'

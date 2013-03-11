@@ -14,5 +14,10 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
+//= require fancybox
 
 $(document).foundation();
+
+jQuery(function() {
+  $("a.fancybox").fancybox();
+});
