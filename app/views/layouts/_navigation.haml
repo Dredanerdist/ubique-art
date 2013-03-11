@@ -1,46 +1,48 @@
-%nav.top-bar
-  %ul.title-area
-    %li.name
-      %h1
-        = link_to root_path, title: 'ubique art' do
-          = image_tag 'logo.png', style: 'padding-top: 10px;'
-    %li.toggle-topbar.menu-icon
-      = link_to '#' do
-        %span Menu
-      /
-  %section.top-bar-section
-    %ul.left
-      %li.divider
-      %li
-        = link_to 'Artists', artist_profiles_path
-      %li.divider
-      %li
-        = link_to 'Spots', spots_path
-      %li.divider
-      %li
-        = link_to 'Werke', paintings_path
-      %li.divider
-      %li
-        = link_to 'Mitglieder', users_path
-      %li.divider
-
-    %ul.right
-      - if user_signed_in?
-        %li
-          = link_to 'Abmelden', destroy_user_session_path, :method=>'delete'
-      - else
-        %li
-          = link_to 'Anmelden', new_user_session_path
-
-      - if user_signed_in?
-        %li.divider
-        %li
-          = link_to 'Profil', current_user
-        %li.divider
-        - if current_user.admin?
+.fixed
+  .contain-to-grid
+    %nav.top-bar
+      %ul.title-area
+        %li.name
+          %h1
+            = link_to root_path, title: 'ubique art' do
+              = image_tag 'logo.png', style: 'padding-top: 10px;'
+        %li.toggle-topbar.menu-icon
+          = link_to '#' do
+            %span Menu
+          /
+      %section.top-bar-section
+        %ul.left
+          %li.divider
           %li
-            = link_to 'Admin', users_path
-      - else
-        %li
-          = link_to 'Registrieren', new_user_registration_path
+            = link_to 'Artists', artist_profiles_path
+          %li.divider
+          %li
+            = link_to 'Spots', spots_path
+          %li.divider
+          %li
+            = link_to 'Werke', paintings_path
+          %li.divider
+          %li
+            = link_to 'Mitglieder', users_path
+          %li.divider
+
+        %ul.right
+          - if user_signed_in?
+            %li
+              = link_to 'Abmelden', destroy_user_session_path, :method=>'delete'
+          - else
+            %li
+              = link_to 'Anmelden', new_user_session_path
+
+          - if user_signed_in?
+            %li.divider
+            %li
+              = link_to 'Profil', current_user
+            %li.divider
+            - if current_user.admin?
+              %li
+                = link_to 'Admin', users_path
+          - else
+            %li
+              = link_to 'Registrieren', new_user_registration_path
 

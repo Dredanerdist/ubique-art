@@ -1,6 +1,10 @@
-= simple_form_for(@artist_profile) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :vita
+= form_for(artist_profile) do |f|
+  .row
+    .large-6.columns
+      = f.label "Vita"
+      = f.text_area :vita
+    
   .form-actions
-    = f.button :submit
+    = f.submit 'Speichern', class: 'button radius'
+    oder
+    = link_to 'zurück', artist_profiles_path, class: 'radius button small alert'
