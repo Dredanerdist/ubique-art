@@ -17,7 +17,8 @@ group :assets do
   gem 'foundicons-rails'
 end
 
-gem 'carrierwave'
+gem 'carrierwave',  '~> 0.6.2'
+gem 'carrierwave-ftp', :require => 'carrierwave/storage/ftp/all' # both FTP/SFTP
 gem 'mini_magick'
 gem 'haml'
 gem 'jquery-rails'
