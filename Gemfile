@@ -21,6 +21,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'haml'
 gem 'jquery-rails'
+gem "fancybox-rails", "~> 0.2.1"
 gem 'gmaps4rails'
 
 gem "thin", ">= 1.5.0"
