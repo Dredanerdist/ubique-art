@@ -42,14 +42,39 @@ ul {
   list-style: none;
 }
 
+/* FOOTER */
+$footer-height: 20px;
+
+html, body, #wrap {height: 100%;}
+
+body > #wrap {
+    height: auto;
+    min-height: 100%;
+}
+
+#main {
+	padding-bottom: $footer-height;
+}  /* Muss genau so hoch sein wie der Footer */
+
 footer {
-	width: 1000px;
-	left:50%;
-	margin-left: -500px;
-	position:fixed;
-    bottom:0px;
-	font-style:italic;
-	margin-bottom: 10px;
+    position: relative;
+	margin-top: -$footer-height; /* Negativer Wert der Footer-Höhe */
+	height: $footer-height;
+	clear:both;
 	text-align:center;
 	font-size: 12px;
 }
+
+.clearfix:after {
+    content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix {display: inline-block;}
+
+/* Bereich nicht für IE-mac Anfang \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* Bereich nicht für IE-mac Ende */
