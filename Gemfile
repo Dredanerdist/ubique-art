@@ -18,8 +18,9 @@ group :assets do
 end
 
 gem 'carrierwave',  '~> 0.6.2'
-#gem 'carrierwave-ftp', :require => 'carrierwave/storage/ftp/all' # both FTP/SFTP
-gem "fog", "~> 1.3.1"
+group :production do #S3
+  gem "fog", "~> 1.3.1" 
+end
 gem 'mini_magick'
 gem 'haml'
 gem 'jquery-rails'
