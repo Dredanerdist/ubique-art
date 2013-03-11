@@ -1,0 +1,5 @@
+-# call with painting (and current_user)
+- if can? :like, painting
+  = link_to "Like", {controller: :users, action: :like, painting_id: painting}, class: 'button small'
+- if can? :unlike, painting
+  = link_to "Unlike", {controller: :users, action: :unlike, painting_id: painting}, class: 'button small secondary' 

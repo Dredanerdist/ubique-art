@@ -1,10 +1,20 @@
-%p#notice= notice
+%p
+  - if can? :edit, painting
+    = link_to 'Bearbeiten', edit_painting_path(@painting), class: 'button small'
+  = render 'users/like'
+  
 %p
   %b 
-    = @painting.name
+    = painting.name
   = image_tag painting.image.gallery.url
+  - if painting.liked_by.any?
+    %i
+      = painting.liked_by.count
+      likes
+  - else
+    %i
+      Dieses Bild hat noch keine likes
 %p
   %b Kurzinfo:
-  = @painting.description
+  = painting.description
 
-= link_to 'Bearbeiten', edit_painting_path(@painting)
