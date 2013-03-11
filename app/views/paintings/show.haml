@@ -6,7 +6,8 @@
 %p
   %b 
     = painting.name
-  = image_tag painting.image.gallery.url
+  = link_to image_tag(painting.image.gallery.url), painting.image.url, :class => 'fancybox', :remote => true
+  %p
   - if painting.liked_by.any?
     %i
       = painting.liked_by.count
