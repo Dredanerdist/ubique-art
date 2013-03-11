@@ -38,8 +38,12 @@ ActiveRecord::Schema.define(:version => 20130311162519) do
     t.string   "name"
     t.text     "description"
     t.integer  "artist_profile_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.string   "image"
   end
 
@@ -74,9 +78,6 @@ ActiveRecord::Schema.define(:version => 20130311162519) do
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.float    "longitude"
-    t.float    "latitude"
-    t.boolean  "gmaps"
   end
 
   create_table "tag_categories", :force => true do |t|

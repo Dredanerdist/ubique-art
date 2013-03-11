@@ -13,12 +13,14 @@
     = render 'layouts/navigation'
 
     #main{:role => "main"}
-      .row
-        .large-12
-          = render '/layouts/messages'
-          = yield
-      .row
-        .small-12.large-12.columns
-          %footer
-            Entwickelt mit Unterstützung von starterkitchen.de
-            = yield :scripts
+      -if current_page?(root_path)
+        = render '/layouts/messages'
+        = yield
+      -else
+        .row
+          .small-12.large-12.columns
+            = render '/layouts/messages'
+            = yield
+    %footer
+      Entwickelt mit Unterstützung von starterkitchen.de
+      = yield :scripts

@@ -40,7 +40,15 @@
 ul {
   list-style: none;
 }
+
 footer {
-	padding-top:10px;
+	width: 1000px;
+	left:50%;
+	margin-left: -500px;
+	position:fixed;
+    bottom:0px;
 	font-style:italic;
+	margin-bottom: 10px;
+	text-align:center;
+	font-size: 12px;
 }
