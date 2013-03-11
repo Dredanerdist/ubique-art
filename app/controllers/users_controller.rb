@@ -11,8 +11,8 @@ class UsersController < ApplicationController
   end
   
   def update
-    authorize! :update, user, :message => 'Das kann nur ein Admin.'
-    if @user.update_attributes(params[:user], :as => :admin)
+    authorize! :update, user
+    if @user.update_attributes(params[:user])
       redirect_to users_path, :notice => "Profildaten aktualisiert."
     else
       redirect_to users_path, :alert => "Profildaten konnten nicht geändert werden."

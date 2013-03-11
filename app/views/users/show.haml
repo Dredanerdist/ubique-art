@@ -1,5 +1,11 @@
+%p
+  - if can? :edit, user
+    = link_to 'Bearbeiten', edit_user_path, class: 'button small'
 %h3 
   = user.name
+- if not user.image.nil? and user.image.length > 0
+  = image_tag user.image.gallery.url
+
 %p
   User: #{user.name}
 %p
