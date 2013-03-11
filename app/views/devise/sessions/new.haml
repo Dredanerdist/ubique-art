@@ -1,20 +1,7 @@
-<<<<<<< HEAD
 %h2 Sign in
 = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
-= f.input :email, :autofocus => true
-= f.input :password
-= f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-= f.button :submit, "Sign in", :class => 'btn-primary'
+= f.input :email, :autofocus => true, label: 'E-Mail'
+= f.input :password, label: 'Passwort'
+= f.input :remember_me, label: "Eingeloggt bleiben", :as => :boolean if devise_mapping.rememberable?
+= f.button :submit, "Einloggen", :class => 'btn-primary'
 = render "devise/shared/links"
-=======
-.row
-  .large-12.columns
-    %h2 Einloggen
-    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
-      = f.input :email, :autofocus => true, label: 'Email'
-      = f.input :password, label: 'Passwort'
-      = f.input :remember_me, label: "Eingeloggt bleiben", :as => :boolean if devise_mapping.rememberable?
-      = f.button :submit, "Einloggen", :class => 'btn-primary'
-      %p
-      = render "devise/shared/links"
->>>>>>> 9877fa9b7f359b21f25b879e95f3a4354fcc19da
