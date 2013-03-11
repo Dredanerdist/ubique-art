@@ -1,0 +1,36 @@
+#gallery.row
+  .large-12.columns
+    %ul.large-block-grid-4
+      - paintings.in_groups_of(4).each do |group|
+        - group.each do |painting|
+          %li
+            - if painting.present?
+              = image_tag painting.image.gallery.url
+              .overlay
+                %span
+                  %h3
+                    = link_to painting.name, painting
+                .artist
+                  von
+                  = link_to painting.artist_profile.user.name, painting.artist_profile
+                .description
+                  = painting.description
+                .actions
+                  %ul.button-group.radius
+                    - # TODO: render 'users/like', painting: painting.id
+                    - if can? :like, painting
+                      %li
+                        = link_to "Like", {controller: :users, action: :like, id: current_user.id, painting_id: painting.id}, class: 'button small'
+                          
+                    - if can? :unlike, painting
+                      %li
+                        = link_to "Unlike", {controller: :users, action: :unlike, id: current_user.id, painting_id: painting.id}, class: 'button small secondary'
+                          
+                    - if can?(:edit, painting)
+                      %li
+                        = link_to edit_painting_path(painting), class: 'button small' do
+                          %i.fi-edit
+                    - if can?(:destroy, painting)
+                      %li
+                        = link_to painting_path(painting), method: :delete, class: 'button small', confirm: 'Sind Sie Sicher?' do
+                          %i.fi-trash

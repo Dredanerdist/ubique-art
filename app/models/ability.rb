@@ -4,6 +4,12 @@ class Ability
   def initialize(user)
     can :view, User
     can :read, [Spot, ArtistProfile, Painting]
+    can :like, Painting do |p|
+      not user.liked_paintings.include?(p)
+    end
+    can :unlike, Painting do |p|
+      user.liked_paintings.include?(p)
+    end
     if not user.nil?
       #user = User.new
       can :read, User
@@ -13,17 +19,22 @@ class Ability
     
       if user.artist_profile.nil?
         can :create, ArtistProfile
-        can :new, ArtistProfile
       else
         can :create, Painting
         can :new, Painting
         can :edit, ArtistProfile do |ap|
           ap.try(:user) == user
         end
-        can :manage, Painting do |p|
+        can :edit, Painting do |p|
           p.try(:artist_profile) == user.try(:artist_profile)
         end   
       end
+      
+      can :create, Spot
+      can :edit, Spot do |s|
+        s.try(:user) == user
+      end
+      
     end
     
     # Define abilities for the passed in user here. For example:

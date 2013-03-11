@@ -28,6 +28,25 @@ class UsersController < ApplicationController
       redirect_to users_path, :notice => "Selbstlöschung nicht möglich."
     end
   end
+  
+  def like # using CURRENT_USER
+    session[:return_to] ||= request.referer
+    painting = Painting.find(params[:painting_id])
+    if can? :like, painting
+      current_user.liked_paintings << painting
+      current_user.save
+    end
+    redirect_to session.delete(:return_to) 
+  end
+  
+  def unlike # using CURRENT_USER
+    session[:return_to] ||= request.referer
+    painting = Painting.find(params[:painting_id])
+    current_user.liked_paintings.delete painting
+    current_user.save
+    redirect_to session.delete(:return_to) 
+  end
+  
   private
   
   def user

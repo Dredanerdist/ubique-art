@@ -7,4 +7,9 @@
   %b Vita:
   %p
     = artist_profile.vita
+  %p
+    - if artist_profile.paintings.any?
+      %h5 Bilder
+      = render 'paintings/grid', paintings: artist_profile.paintings
+    
 = link_to 'Zurück zur Übersicht', artist_profiles_path, class: 'button small'
