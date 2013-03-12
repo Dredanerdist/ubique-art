@@ -1,12 +1,18 @@
 ---
 business-camps.gif: business-camps-94489a4bd94439ccea14ee2db5c2ef08.gif
 business-camps/index.gif: business-camps-94489a4bd94439ccea14ee2db5c2ef08.gif
+image_default.png: image_default-516502eaabed073518b4c287e5a135bd.png
+image_default/index.png: image_default-516502eaabed073518b4c287e5a135bd.png
 landingpage1.jpeg: landingpage1-a31f3fbb76e835374b9f6a6bc4c722bb.jpeg
 landingpage1/index.jpeg: landingpage1-a31f3fbb76e835374b9f6a6bc4c722bb.jpeg
 logo.png: logo-7721a2c92fe56b4f88daa5e0334d11dc.png
 logo/index.png: logo-7721a2c92fe56b4f88daa5e0334d11dc.png
+spot_default.png: spot_default-9638e4c2e83739df7424e05a1d687e7c.png
+spot_default/index.png: spot_default-9638e4c2e83739df7424e05a1d687e7c.png
 team.jpg: team-923e015e6a7c4a6e51525e753db02f4b.jpg
 team/index.jpg: team-923e015e6a7c4a6e51525e753db02f4b.jpg
+user_default.png: user_default-2d805d95c3f70e2a21874d3691a9c74c.png
+user_default/index.png: user_default-2d805d95c3f70e2a21874d3691a9c74c.png
 application.js: application-bbdb2b9284f4ceeb1d62d06c317bd039.js
 application/index.js: application-bbdb2b9284f4ceeb1d62d06c317bd039.js
 application.css: application-d5928b471773b67e2af0307556aaff0d.css
