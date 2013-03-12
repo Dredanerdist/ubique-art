@@ -4,17 +4,19 @@
     %table.large-12
       %thead
         %tr
+          %th
           %th Name
-          %th Email
-          %th Dabei seit
-          %th
-          %th
+          %th Status
       %tbody
         - users.each do |user|
           %tr
+            %td= image_tag user.image.thumbnail.url
             %td= link_to user.name, user
-            %td= user.email
-            %td= user.created_at.to_date
+            %td 
+              - if user.has_role :admin
+                Admin
+              - elsif not user.artist_profile.nil?
+                Künstler
             - if can? :manage, user
               %td
                 %a.btn.btn-mini{"data-toggle" => "modal", :href => "#role-options-#{user.id}", :type => "button"} Adminstatus verwalten

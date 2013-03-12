@@ -35,6 +35,12 @@
     color:#2BA6CB;
   }
 }
+.floatleft {
+  float:left;
+}
+table.invisible {border: none; border-collapse: collapse; border-spacing: 0;}
+td.invisible, th.invisible {padding: 0;}
+
 .title-area .name img {
   width: 130px;
 

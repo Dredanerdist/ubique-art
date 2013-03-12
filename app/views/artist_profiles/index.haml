@@ -6,10 +6,19 @@
       %p
     %table.large-12
       %tr
-        %th Name
-        %th Aktionen
+        %th
+        %th Künstler
+        %th neuste Bilder
       - artist_profiles.each do |artist_profile|
         %tr
-          %td= link_to artist_profile.user.name, artist_profile
+          %td
+            = link_to image_tag(artist_profile.user.image.thumbnail.url), artist_profile
+          %td
+            = link_to artist_profile.user.name, artist_profile
+          %td
+            %table.invisible
+              - artist_profile.paintings.last(8).each do |painting|
+                %td.invisible
+                  = link_to image_tag(painting.image.thumbnail.url), painting
           - if can? :delete,  artist_profile then
             %td= link_to 'Löschen', artist_profile, method: :delete, data: { confirm: 'Sicher?' }, class: 'button small'

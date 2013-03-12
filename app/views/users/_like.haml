@@ -1,5 +1,5 @@
 -# call with painting (and current_user)
-- if can? :like, painting
+- if can? :like, painting and not current_user.liked_paintings.include? painting
   = link_to "Like", {controller: :users, action: :like, painting_id: painting}, class: 'button small'
-- if can? :unlike, painting
+- if can? :unlike, painting and current_user.liked_paintings.include? painting
   = link_to "Unlike", {controller: :users, action: :unlike, painting_id: painting}, class: 'button small secondary' 
