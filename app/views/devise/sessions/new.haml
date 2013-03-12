@@ -1,7 +1,10 @@
-<h2>Anmelden</h2>
+%h2 Anmelden
 = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
-  = f.input :email, :autofocus => true, label: 'Email'
-  = f.input :password, label: 'Passwort'
-  = f.input :remember_me, label: "Eingeloggt bleiben", :as => :boolean if devise_mapping.rememberable?
-  = f.button :submit, "Einloggen", :class => 'btn-primary'
-= render "devise/shared/links"
+  .large-6.columns
+    = f.input :email, :autofocus => true, label: 'Email'
+    = f.input :password, label: 'Passwort'
+    = f.input :remember_me, label: "Eingeloggt bleiben", :as => :boolean if devise_mapping.rememberable?
+    = f.button :submit, "Einloggen", :class => 'button radius primary'
+    %br 
+    %br
+    = render "devise/shared/links"

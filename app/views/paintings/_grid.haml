@@ -18,11 +18,11 @@
                 .actions
                   %ul.button-group.radius
                     - # TODO: render 'users/like', painting: painting.id
-                    - if can? :like, painting
+                    - if can? :like, painting and not current_user.liked_paintings.include? painting
                       %li
                         = link_to "Like", {controller: :users, action: :like, id: current_user.id, painting_id: painting.id}, class: 'button small'
                           
-                    - if can? :unlike, painting
+                    - if can? :unlike, painting and current_user.liked_paintings.include? painting
                       %li
                         = link_to "Unlike", {controller: :users, action: :unlike, id: current_user.id, painting_id: painting.id}, class: 'button small secondary'
                           
