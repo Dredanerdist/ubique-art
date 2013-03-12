@@ -17,6 +17,7 @@
 */
 @import "compass/css3/transition";
 @import "compass/css3/filter";
+@import "foundation_and_overrides";
 
 .content {
   background-color: #eee;
@@ -29,7 +30,11 @@
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
-
+.top-bar-section ul li > a {
+  &:hover {
+    color:#2BA6CB;
+  }
+}
 .title-area .name img {
   width: 130px;
 
@@ -42,6 +47,7 @@ ul {
   list-style: none;
 }
 
+
 /* FOOTER */
 $footer-height: 20px;
 
@@ -53,7 +59,8 @@ body > #wrap {
 }
 
 #main {
-	padding-bottom: $footer-height;
+  padding-top: $topbar-height;
+	padding-bottom: $footer-height + 10;
 }  /* Muss genau so hoch sein wie der Footer */
 
 footer {

@@ -43,12 +43,11 @@
     background: #222222;
     margin-top: -2px;
   }
-
   .imgleft {
     float: left;
     width: 50%;
     margin-top: -90px;
-    border: 10px solid white;
+    border: 10px solid white;    
   }
   .imgright {
     float: right;
@@ -57,8 +56,11 @@
     border: 10px solid white;
   }
   .half {
-    float: top;
+    float: left;
     width: 50%;
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
-  
+ 
 }
