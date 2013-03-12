@@ -1,0 +1,14 @@
+= form_for(user) do |f|
+  .row
+    .large-6.columns
+      = f.label "Name"
+      = f.text_field :name
+  .row
+    .large-12.columns
+      = f.label "Profilbild"
+      = f.file_field :image
+  %p
+  .form-actions
+    = f.submit 'Speichern', class: 'button radius'
+    oder
+    = link_to 'zurück', users_path, class: 'radius button small alert'

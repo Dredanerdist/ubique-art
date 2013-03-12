@@ -7,12 +7,10 @@
   = image_tag user.image.gallery.url
 
 %p
-  User: #{user.name}
-%p
   Email: #{user.email if user.email}
 %p 
   Dabei seit #{user.created_at.to_date}
 %p 
   - if user.liked_paintings.any?
-    %h5 Favoriten
+    %h5 Favoriten (#{user.liked_paintings.count})
     = render 'paintings/grid', paintings: user.liked_paintings

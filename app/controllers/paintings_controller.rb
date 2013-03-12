@@ -1,5 +1,6 @@
 class PaintingsController < ApplicationController
   respond_to :html
+  require 'rqrcode'
   # GET /paintings
   def index
     @paintings = Painting.scoped
@@ -8,6 +9,9 @@ class PaintingsController < ApplicationController
   # GET /paintings/1
   def show
     authorize! :show, painting
+    if (params[:spotted]=='true') # TODO
+      @spotted = true
+    end
   end
 
   # GET /paintings/new
@@ -54,8 +58,37 @@ class PaintingsController < ApplicationController
 
     redirect_to paintings_url
   end
+  
+  def qr
+    render :layout => false
+  end
+  
+  def qr_png # TODO only once, store image @S3
+    size = Integer(params[:size]) || 10
+    @qr = gen_qr
+    image = ChunkyPNG::Image.new(size * @qr.modules.size, size * @qr.modules.size,
+                  ChunkyPNG::Color::WHITE)
+    @qr.modules.each_index do |x|
+      @qr.modules.each_index do |y|
+        if (@qr.dark?(x,y))
+          image.rect(x * size, y * size, (x * size) + size, (y * size) + size, 
+            ChunkyPNG::Color::BLACK, ChunkyPNG::Color::BLACK)
+        end
+      end
+    end
+    send_data(image , :filename => "qrcode.png", :type=>"image/png")
+  end
+  
+  def qr_download
+    @no_footer = true
+  end
 
   private
+  
+  def gen_qr
+    RQRCode::QRCode.new(painting_url(painting)+'&spotted=true', size:7)
+  end
+  helper_method :gen_qr
   
   def painting
     return @painting ||= Painting.find(params.fetch(:id))

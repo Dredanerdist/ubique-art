@@ -1,0 +1,11 @@
+%h6 QR-Code downloaden  
+= form_tag url_for( controller: :paintings, action: :qr_png, painting_id: painting.id) do
+  = radio_button_tag(:size, "3") 
+  = label_tag(:size_small, "Klein") 
+  = radio_button_tag(:size, "6", checked = true) 
+  = label_tag(:age_adult, "Mittel")
+  = radio_button_tag(:size, "12")
+  = label_tag(:age_adult, "Groß")
+  = radio_button_tag(:size, "25")
+  = label_tag(:age_adult, "Riesig")
+  = submit_tag "Download", class: "button radius small"

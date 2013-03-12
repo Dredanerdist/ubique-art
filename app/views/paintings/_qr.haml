@@ -1,0 +1,10 @@
+= stylesheet_link_tag "qrcode_table", :media => "all"
+- @qr = gen_qr
+%table.qr
+  - @qr.modules.each_index do |x|
+    %tr.qr
+    - @qr.modules.each_index do |y|
+      - if @qr.dark?(x,y)
+        %td.black
+      - else
+        %td.white

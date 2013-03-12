@@ -25,7 +25,10 @@ gem 'mini_magick'
 gem 'haml'
 gem 'jquery-rails'
 gem "fancybox-rails", "~> 0.2.1"
+
 gem 'gmaps4rails'
+gem "rqrcode", "~> 0.4.2" # QR codes
+gem "chunky_png"
 
 gem "thin", ">= 1.5.0"
 gem "hominid", ">= 3.0.5"
