@@ -27,5 +27,7 @@ UbiqueArt::Application.routes.draw do
   
   match '/users/:id/like/:painting_id' => 'users#like'
   match '/users/:id/unlike/:painting_id' => 'users#unlike'
+  match '/paintings/:id/qr_png' => 'paintings#qr_png'
+  match '/paintings/:id/qr_download' => 'paintings#qr_download'
     
 end

@@ -1,4 +1,6 @@
 @import "compass/css3/transition";
+@import "foundation_and_overrides";
+
 
 #gallery {
   margin-top: 20px;
@@ -16,9 +18,10 @@
 
     &:hover {
       opacity: 1;
-      background-color: rgba(233, 233, 233, 0.75);
+      background-color: rgba(34, 34, 34, 0.75);
       @include transition-property(opacity);
       @include transition-duration(0.5s);
+      border: 2px solid $primary-color;
     }
   }
 }

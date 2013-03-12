@@ -3,19 +3,25 @@
     = link_to 'Bearbeiten', edit_painting_path(@painting), class: 'button small'
   = render 'users/like'
   
-%p
-  %b 
-    = painting.name
-  = link_to image_tag(painting.image.gallery.url), painting.image.url, :class => 'fancybox', :remote => true
+.row
+  .large-4.columns
+    = link_to image_tag(painting.image.gallery.url), painting.image.url, :class => 'fancybox', :remote => true
+  .large-8.columns
+    %h5= painting.name
+    - if painting.liked_by.any?
+      %i
+        = painting.liked_by.count
+        likes
+    - else
+      %i
+        Dieses Bild hat noch keine likes
   %p
-  - if painting.liked_by.any?
-    %i
-      = painting.liked_by.count
-      likes
-  - else
-    %i
-      Dieses Bild hat noch keine likes
-%p
-  %b Kurzinfo:
-  = painting.description
-
+    %h6 Kurzinfo:
+    = painting.description
+.row
+  .large-1.columns
+    = link_to image_tag(url_for controller: :paintings, action: :qr_png, painting_id: painting.id, size: 3), url_for( controller: :paintings, action: :qr_download, painting_id: painting.id), remote: true, class: 'fancybox'
+  .large-3.columns
+    %h6= link_to "QR-Code downloaden", url_for(controller: :paintings, action: :qr_download, painting_id: painting.id), remote: true, class: 'fancybox' 
+    
+  .large-8.columns
