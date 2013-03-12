@@ -15,8 +15,8 @@
 // $em-base: 16px;
 
 // We use these to control various global styles
-$body-bg: #f8f8f8;
-$body-font-color: #777;
+$body-bg: #222;
+$body-font-color: #888;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
@@ -28,13 +28,13 @@ $body-font-color: #777;
 // $text-direction: ltr;
 
 // We use these as default colors throughout
-// $primary-color: #2ba6cb;
+ $primary-color: #2ba6cb;
 // $secondary-color: #e9e9e9;
 // $alert-color: #c60f13;
 // $success-color: #5da423;
 
 // We use these to make sure border radius matches unless we want it different.
-// $global-radius: 3px;
+$global-radius: 5px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
@@ -73,7 +73,7 @@ $body-font-color: #777;
 // $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $header-font-weight: bold;
 // $header-font-style: normal;
-// $header-font-color: #222;
+$header-font-color: lighten($primary-color, 20%);
 // $header-line-height: 1.4;
 // $header-top-margin: .2em;
 // $header-bottom-margin: .5em;
@@ -89,7 +89,7 @@ $body-font-color: #777;
 
 // These control how subheaders are styled.
 // $subheader-line-height: 1.4;
-// $subheader-font-color: lighten($header-font-color, 30%);
+$subheader-font-color: lighten($header-font-color, 30%);
 // $subheader-font-weight: 300;
 // $subheader-top-margin: .2em;
 // $subheader-bottom-margin: .5em;
@@ -116,7 +116,7 @@ $body-font-color: #777;
 // We use these to style anchors
 // $anchor-text-decoration: none;
 // $anchor-font-color: $primary-color;
-// $anchor-font-color-hover: darken($primary-color, 5%);
+$anchor-font-color-hover: lighten($primary-color, 25%);
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;
@@ -176,17 +176,17 @@ $body-font-color: #777;
 // $label-pointer: pointer;
 // $label-font-size: emCalc(14px);
 // $label-font-weight: 500;
-// $label-font-color: lighten(#000, 30%);
+ $label-font-color: lighten(#000, 80%);
 // $label-bottom-margin: emCalc(3px);
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: emCalc(14px);
-// $input-bg-color: #fff;
-// $input-focus-bg-color: darken(#fff, 2%);
+ $input-bg-color: #ddd;
+ $input-focus-bg-color: white;
 // $input-border-color: darken(#fff, 20%);
-// $input-focus-border-color: darken(#fff, 40%);
+ $input-focus-border-color: $primary-color;
 // $input-border-style: solid;
-// $input-border-width: 1px;
-// $input-disabled-bg: #ddd;
+ $input-border-width: 3px;
+ $input-disabled-bg: #aaa;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 
 // We use these to style the fieldset border and spacing.
@@ -229,20 +229,20 @@ $body-font-color: #777;
 // $button-margin-bottom: emCalc(20px);
 
 // We use these to control button text styles.
-// $button-font-color: #fff;
+$button-font-color: #eee;
 // $button-font-color-alt: #333;
 // $button-font-med: emCalc(16px);
 // $button-font-tny: emCalc(11px);
 // $button-font-sml: emCalc(13px);
 // $button-font-lrg: emCalc(20px);
-// $button-font-weight: bold;
+ $button-font-weight: normal;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
-// $button-function-factor: 10%;
+ $button-function-factor: 15%;
 
 // We use these to control button border styles.
-// $button-border-width: 1px;
+ $button-border-width: 2px;
 // $button-border-style: solid;
 // $button-border-color: darken($primary-color, $button-function-factor);
 
@@ -339,18 +339,18 @@ $body-font-color: #777;
 // $alert-font-color-alt: darken($secondary-color, 60%);
 
 // We use this for close hover effect.
-// $alert-function-factor: 10%;
+$alert-function-factor: 15%;
 
 // We use these to control border styles.
 // $alert-border-style: solid;
-// $alert-border-width: 1px;
+$alert-border-width: 2px;
 // $alert-border-color: darken($primary-color, $alert-function-factor);
 // $alert-bottom-margin: emCalc(20px);
 
 // We use these to style the close buttons
-// $alert-close-color: #333;
+$alert-close-color: #222;
 // $alert-close-position: emCalc(5px);
-// $alert-close-font-size: emCalc(22px);
+ $alert-close-font-size: emCalc(25px);
 // $alert-close-opacity: 0.3;
 // $alert-close-opacity-hover: 0.5;
 // $alert-close-padding: 5px 4px 4px;
@@ -878,25 +878,25 @@ $body-font-color: #777;
 //
 
 // These control the background color for the table and even rows
-// $table-bg: #fff;
-// $table-even-row-bg: #f9f9f9;
+$table-bg: #222;
+$table-even-row-bg: #333;
 
 // These control the table cell border style
 // $table-border-style: solid;
 // $table-border-size: 1px;
-// $table-border-color: #ddd;
+ $table-border-color: black;
 
 // These control the table head styles
-// $table-head-bg: #f5f5f5;
-// $table-head-font-size: emCalc(14px);
-// $table-head-font-color: #222;
+ $table-head-bg: #444;
+ $table-head-font-size: emCalc(16px);
+ $table-head-font-color: #ddd;
 // $table-head-font-weight: bold;
 // $table-head-padding: emCalc(8px) emCalc(10px) emCalc(10px);
 
 // These control the row padding and font styles
 // $table-row-padding: emCalc(9px) emCalc(10px);
-// $table-row-font-size: emCalc(14px);
-// $table-row-font-color: #222;
+ $table-row-font-size: emCalc(15px);
+ $table-row-font-color: #888;
 // $table-line-height: emCalc(18px);
 
 // These are for controlling the display and margin of tables
@@ -960,9 +960,9 @@ $topbar-height: 50px;
 // $topbar-title-font-size: emCalc(17px);
 
 // Set the link colors and styles for top-level nav
-// $topbar-link-color: #fff;
+$topbar-link-color: #888;
 // $topbar-link-weight: bold;
-// $topbar-link-font-size: emCalc(13px);
+ $topbar-link-font-size: emCalc(16px);
 
 // Style the top bar dropdown elements
 // $topbar-dropdown-bg: #fff;
