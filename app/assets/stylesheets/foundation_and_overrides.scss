@@ -883,7 +883,7 @@ $table-even-row-bg: #333;
 
 // These control the table cell border style
 // $table-border-style: solid;
-// $table-border-size: 1px;
+ $table-border-size: 0px;
  $table-border-color: black;
 
 // These control the table head styles
@@ -901,7 +901,7 @@ $table-even-row-bg: #333;
 
 // These are for controlling the display and margin of tables
 // $table-display: table-cell;
-// $table-margin-bottom: emCalc(20px);
+$table-margin-bottom: emCalc(0px);
 
 //
 // Image Thumbnail Variables
