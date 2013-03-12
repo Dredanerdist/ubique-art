@@ -12,7 +12,10 @@
       - artist_profiles.each do |artist_profile|
         %tr
           %td
-            = link_to image_tag(artist_profile.user.image.thumbnail.url), artist_profile
+            - if artist_profile.user.image.thumbnail.url.nil?
+              = link_to image_tag('user_default.png', size: "50x50"), artist_profile
+            - else
+              = link_to image_tag(artist_profile.user.image.thumbnail.url), artist_profile
           %td
             = link_to artist_profile.user.name, artist_profile
           %td

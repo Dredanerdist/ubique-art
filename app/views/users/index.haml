@@ -10,7 +10,10 @@
       %tbody
         - users.each do |user|
           %tr
-            %td= image_tag user.image.thumbnail.url
+            - if user.image.thumbnail.url.nil?
+              %td= image_tag 'user_default.png', size: "50x50"
+            - else 
+              %td= image_tag user.image.thumbnail.url
             %td= link_to user.name, user
             %td 
               - if user.has_role :admin
