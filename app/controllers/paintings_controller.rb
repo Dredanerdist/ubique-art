@@ -9,6 +9,9 @@ class PaintingsController < ApplicationController
   # GET /paintings/1
   def show
     authorize! :show, painting
+    if (params[:spotted]=='true') # TODO
+      @spotted = true
+    end
   end
 
   # GET /paintings/new
@@ -83,7 +86,7 @@ class PaintingsController < ApplicationController
   private
   
   def gen_qr
-    RQRCode::QRCode.new(url_for painting)
+    RQRCode::QRCode.new(painting_url(painting)+'&spotted=true', size:7)
   end
   helper_method :gen_qr
   

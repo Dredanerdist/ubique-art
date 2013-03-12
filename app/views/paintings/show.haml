@@ -2,7 +2,10 @@
   - if can? :edit, painting
     = link_to 'Bearbeiten', edit_painting_path(@painting), class: 'button small'
   = render 'users/like'
-  
+-if @spotted == true
+  .row 
+    %h2 
+      spotted
 .row
   .large-4.columns
     = link_to image_tag(painting.image.gallery.url), painting.image.url, :class => 'fancybox', :remote => true
@@ -15,9 +18,10 @@
     - else
       %i
         Dieses Bild hat noch keine likes
-  %p
-    %h6 Kurzinfo:
+    %h5 Kurzinfo:
     = painting.description
+.row
+%p
 .row
   .large-1.columns
     = link_to image_tag(url_for controller: :paintings, action: :qr_png, painting_id: painting.id, size: 3), url_for( controller: :paintings, action: :qr_download, painting_id: painting.id), remote: true, class: 'fancybox'
