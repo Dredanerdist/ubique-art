@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def like # using CURRENT_USER
     session[:return_to] ||= request.referer
     painting = Painting.find(params[:painting_id])
-    if can? :like, painting and not current_user.include? painting
+    if can? :like, painting and not current_user.liked_paintings.include? painting
       current_user.liked_paintings << painting
       current_user.save
     end
