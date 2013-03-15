@@ -1,4 +1,4 @@
-
+= provide(:title, artist_profile.user.name)
 %p
   - if can? :edit, artist_profile
     = link_to 'Bearbeiten', edit_artist_profile_path, class: 'button small'

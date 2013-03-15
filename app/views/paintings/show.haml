@@ -1,3 +1,4 @@
+= provide(:title, painting.name)
 %p
   - if can? :edit, painting
     = link_to 'Bearbeiten', edit_painting_path(@painting), class: 'button small'
@@ -10,7 +11,6 @@
   .large-4.columns
     = link_to image_tag(painting.image.gallery.url), painting.image.url, :class => 'fancybox', :remote => true
   .large-8.columns
-    %h5= painting.name
     - if painting.liked_by.any?
       %i
         = painting.liked_by.count

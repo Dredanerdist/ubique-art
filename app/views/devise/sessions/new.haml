@@ -1,4 +1,4 @@
-%h2 Anmelden
+= provide(:title, "Anmelden")
 = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
   .large-6.columns
     = f.input :email, :autofocus => true, label: 'Email'

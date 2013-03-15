@@ -1,9 +1,8 @@
+= provide(:title, spot.name)
+
 %p
   - if can? :edit, spot
     = link_to 'Bearbeiten', edit_spot_path(spot), class: 'button small'
-%p
-  %b Name:
-  = spot.name
 %p
   %b Beschreibung:
   = spot.description

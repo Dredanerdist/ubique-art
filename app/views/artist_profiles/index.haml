@@ -1,27 +1,25 @@
-.row
-  .large-12.columns
-    %h1 Teilnehmende Künstler
-    - if can? :create, ArtistProfile
-      = link_to 'Ich bin Künstler!', new_artist_profile_path
-      %p
-    %table.large-12
-      %tr
-        %th
-        %th Künstler
-        %th neuste Bilder
-      - artist_profiles.each do |artist_profile|
-        %tr
-          %td
-            - if artist_profile.user.image.thumbnail.url.nil?
-              = link_to image_tag('user_default.png', size: "50x50"), artist_profile
-            - else
-              = link_to image_tag(artist_profile.user.image.thumbnail.url), artist_profile
-          %td
-            = link_to artist_profile.user.name, artist_profile
-          %td
-            %table.invisible
-              - artist_profile.paintings.last(8).each do |painting|
-                %td.invisible
-                  = link_to image_tag(painting.image.thumbnail.url), painting
-          - if can? :delete,  artist_profile then
-            %td= link_to 'Löschen', artist_profile, method: :delete, data: { confirm: 'Sicher?' }, class: 'button small'
+= provide(:title, "Teilnehmende Künstler")
+- if can? :create, ArtistProfile
+  = link_to 'Ich bin Künstler!', new_artist_profile_path
+  %p
+%table.large-12
+  %tr
+    %th
+    %th Künstler
+    %th neuste Bilder
+  - artist_profiles.each do |artist_profile|
+    %tr
+      %td
+        - if artist_profile.user.image.thumbnail.url.nil?
+          = link_to image_tag('user_default.png', size: "50x50"), artist_profile
+        - else
+          = link_to image_tag(artist_profile.user.image.thumbnail.url), artist_profile
+      %td
+        = link_to artist_profile.user.name, artist_profile
+      %td
+        %table.invisible
+          - artist_profile.paintings.last(8).each do |painting|
+            %td.invisible
+              = link_to image_tag(painting.image.thumbnail.url), painting
+      - if can? :delete,  artist_profile then
+        %td= link_to 'Löschen', artist_profile, method: :delete, data: { confirm: 'Sicher?' }, class: 'button small'

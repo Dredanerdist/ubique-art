@@ -1,29 +1,27 @@
-.row
-  .large-12.columns
-    %h1 Spots
-    %table.large-12
-      %thead
-        %tr
-          %th Name
-          %th Kapazität
-          %th Ort
-          %th Aktionen
-      %tbody
-        - spots.each do |spot|
-          %tr
-            %td= link_to spot.name, spot
-            %td= spot.capacity
-            %td= spot.city
-            %td
-              %ul.button-group.radius
-                - if can? :edit, spot
-                  %li
-                    = link_to 'Bearbeiten', edit_spot_path(spot), class: 'button small'
-                - if can? :delete, spot
-                  %li
-                    = link_to 'Löschen', spot, method: :delete, data: { confirm: 'Sicher?' }, class: 'button small alert'
-    %br/
-    - if can? :create, Spot
-      = link_to 'Neuen Spot eintragen', new_spot_path
-    %p
-    = gmaps4rails(@json)
+= provide(:title, "Spots")
+%table.large-12
+  %thead
+    %tr
+      %th Name
+      %th Kapazität
+      %th Ort
+      %th Aktionen
+  %tbody
+    - spots.each do |spot|
+      %tr
+        %td= link_to spot.name, spot
+        %td= spot.capacity
+        %td= spot.city
+        %td
+          %ul.button-group.radius
+            - if can? :edit, spot
+              %li
+                = link_to 'Bearbeiten', edit_spot_path(spot), class: 'button small'
+            - if can? :delete, spot
+              %li
+                = link_to 'Löschen', spot, method: :delete, data: { confirm: 'Sicher?' }, class: 'button small alert'
+%br/
+- if can? :create, Spot
+  = link_to 'Neuen Spot eintragen', new_spot_path
+%p
+= gmaps4rails(@json)

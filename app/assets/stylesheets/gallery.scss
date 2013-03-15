@@ -6,6 +6,9 @@
   margin-top: 20px;
   li {
     position: relative;
+    img {
+      border: 2px solid #888;
+    }
   }
   .overlay {
     position: absolute;

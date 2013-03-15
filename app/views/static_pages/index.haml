@@ -9,7 +9,7 @@
         %h5 Für #{link_to 'Künstler', '#for_artists'}, #{link_to 'Kunstinteressierte', '#for_users'} und #{link_to 'Unternehmen', '#for_spots'}
       - if current_user.nil?
         %li.no-bg
-          = link_to 'Jetzt Registrieren!', new_user_registration_path, class: 'button radius right'
+          = link_to 'Registrieren!', new_user_registration_path, class: 'button radius right'
   .divider
   .row
     .large-12.columns{ style: 'line-height: 18px' }

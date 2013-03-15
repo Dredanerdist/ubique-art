@@ -1,9 +1,10 @@
 !!!
 %html
+  - @title = content_for?(:title) ? ">> #{yield(:title)}" : ""
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %title= content_for?(:title) ? yield(:title) : "Ubique Art"
-    %meta{:content => content_for?(:description) ? yield(:description) : "Ubique Art", :name => "description"}/
+    %title ubique art #{@title}
+    %meta{:content => content_for?(:description) ? yield(:description) : "ubique art", :name => "description"}/
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = javascript_include_tag "vendor/custom.modernizr"
@@ -21,8 +22,11 @@
           .row
             .small-12.large-12.columns
               = render '/layouts/messages'
+              - if @title.length
+                %h2 
+                  %span.heading= @title
               = yield
     %footer
       - unless @no_footer
-        Entwickelt mit Unterstützung von starterkitchen.de | #{link_to "Impressum", "/impressum"} | #{link_to "Über ubique art", "/#about"}
+        #{link_to "Impressum", "/impressum"} | #{link_to "Über ubique art", "/#about"} | Entwickelt mit Unterstützung von #{link_to 'starterkitchen.de', 'http://starterkitchen.de'}
     = yield :scripts

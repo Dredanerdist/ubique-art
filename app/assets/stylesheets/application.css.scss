@@ -19,6 +19,11 @@
 @import "compass/css3/filter";
 @import "foundation_and_overrides";
 
+.heading {
+ background-color: #444;
+  /*color: #333;
+*/}
+
 .content {
   background-color: #eee;
   padding: 20px;
@@ -54,7 +59,7 @@
   border-left: 1px solid rgba(0,0,0,0);
   border-right: 1px solid rgba(0,0,0,0);
   &:hover {
-    color: white;//#2BA6CB;
+    color: white; //#2BA6CB;
     border-top: 3px solid rgba(0,0,0,0);
     border-bottom: 3px solid $primary-color;
     border-left: 1px solid $primary-color;
