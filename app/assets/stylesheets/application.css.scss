@@ -30,11 +30,41 @@
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
-.top-bar-section ul li > a {
-  &:hover {
-    color:#2BA6CB;
-  }
+.top-bar-section ul.left {
+  background-color: transparent;
 }
+.top-bar-section ul.right {
+  background-color: transparent;
+}
+.top-bar-section ul li > a.alert {
+  &:hover {
+    border-bottom: 3px solid $alert-color;
+    border-left: 1px solid $alert-color;
+    border-right: 1px solid $alert-color;    
+  } 
+}
+.top-bar-section ul li > a.success {
+  &:hover {
+    border-bottom: 3px solid $success-color;
+    border-left: 1px solid $success-color;
+    border-right: 1px solid $success-color;    
+  } 
+}
+.top-bar-section ul li > a {
+  border-left: 1px solid rgba(0,0,0,0);
+  border-right: 1px solid rgba(0,0,0,0);
+  &:hover {
+    color: white;//#2BA6CB;
+    border-top: 3px solid rgba(0,0,0,0);
+    border-bottom: 3px solid $primary-color;
+    border-left: 1px solid $primary-color;
+    border-right: 1px solid $primary-color;
+    @include transition-duration(0.5s);
+    
+  } 
+}
+
+
 .floatleft {
   float:left;
 }
